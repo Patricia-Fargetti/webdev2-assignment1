@@ -1,0 +1,84 @@
+.container{
+  margin:50px;
+  display:flex;
+  justify-content: space-around;
+}
+.title {
+    font-size: 4rem;
+    color:red;
+    padding: 20px 20px;
+    display: flex;
+
+justify-content: center;
+
+ text-align: center;
+}
+.banner-image{
+    background-image:  url("images/guitar_banner1.png");
+    height: 460px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+body{
+    background-color: #181818;
+margin:0;
+}
+
+.authentication{
+    color:white;
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #383838;
+  }
+  
+  .menu-items {
+    float: right;
+    padding-top:20px;
+  }
+  
+  .contact-list li{
+      color:red;
+      text-align: center;
+      list-style: none;
+  }
+
+.menu-items a {
+    /* display: block; */
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  .menu-items a:hover {
+   text-decoration: underline;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .banner-image{
+      background-image:  url("images/guitar_banner.png");
+      background-position: right;
+    }
+    .title{
+      color:red;
+      
+    }
+    .container{
+      display:flex;
+      flex-direction: column;
+      justify-content: space-around;
+   
+    }
+    img{
+      margin-bottom: 20px;
+    }
+  }
