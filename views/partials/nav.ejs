@@ -3,17 +3,26 @@
     </a>
     <ul class="menu">
         <a href="/">
-            <img src="images/guitar-logo.png" height="70px">
-            <li class="menu-items"><a href="/contact">Contact</a></li>
-            <% if(isAuthenticated !==undefined) { %>
+            <li>
+                <img src="images/guitar-logo.png" height="70px">
+            </li>
+            <div class="text_menu">
+                <div class="text-items-menu">
+                    <li class="menu-items"><a href="/contact">Contact</a></li>
+                    <% if(isAuthenticated !==undefined) { %>
 
-                <li class="menu-items"><a href="/secured">Secured</a></li>
-                <% if(!isAuthenticated) { %>
-                    <li class="menu-items"><a href="/login">Login</a></li>
-                    <% } else { %>
-                        <li class="menu-items"><a href="/logout">Logout</a></li>
-                        <% } %>
-                            <% } %>
+                        <li class="menu-items"><a href="/secured">Secured</a></li>
+                        <li class="menu-items">
+                            <a href="/create">Create Record</a>
+                        </li>
+                        <% if(!isAuthenticated) { %>
+                            <li class="menu-items"><a href="/login">Login</a></li>
+                            <% } else { %>
+                                <li class="menu-items"><a href="/logout">Logout</a></li>
+                                <% } %>
+                                    <% } %>
 
+                </div>
+            </div>
     </ul>
 </nav>

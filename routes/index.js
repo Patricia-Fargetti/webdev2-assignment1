@@ -8,13 +8,7 @@ const axios = require('axios');
 // however I was not able to achieve the redirection, I also tried instaling npm history
 //and did not work //
 
-const onRedirectCallback = appState => {
-    history.push(
-      appState && appState.targetUrl
-        ? appState.targetUrl
-        : window.location.href = "http://localhost:3000/user"
-    );
-  };
+
 
 
   
@@ -23,15 +17,10 @@ router.get('/', (req, res)=> {
     res.render("index", { 
         title: "My auth app",
         isAuthenticated: isAuthenticated
-     });console.log(req.oidc.accessToken)
+     });
+     console.log(req.oidc.accessToken)
 
-     function redirectUser (user, context, callback) {
-  let isAuthenticated = req.oidc.isAuthenticated();
-context.redirect = {
-   url: "http://localhost:3000/user"
-    };
-    return callback;
-    }
+    
 });
 
 router.get('/contact', (req, res)=>{
@@ -50,6 +39,18 @@ router.get('/user', (req, res)=>{
    
     title: "done",
     isAuthenticated: isAuthenticated
+
+});
+
+
+});
+
+
+router.get('/logout', (req, res)=>{
+   
+    res.render('logout', {
+   
+    title: "done",
 
 });
 
@@ -82,6 +83,34 @@ router.get('/secured', requiresAuth(), async(req, res) => {
         data
     })
 }) 
+
+router.get('/create', requiresAuth(), async(req,res) =>{
+    let data = {}
+    const { token_type, access_token} = req.oidc.accessToken;
+    try{
+         const apiResponse = await axios.get('http://localhost:5000/role' ,{
+            headers: {
+                 authorization: `${token_type} ${access_token}`
+                }
+             }); 
+             data = apiResponse.data;
+             console.log(data);
+             
+             res.render('create',{
+                title:'create a new blog',
+                isAuthenticated: req.oidc.isAuthenticated(),
+                 user:req.oidc.user, 
+                 data: data 
+                }) 
+            }catch(e) { 
+                console.log(e);}
+                res.render('notAccess',{
+                    title:'you do not access',
+                    isAuthenticated: req.oidc.isAuthenticated(),
+                     user:req.oidc.user, 
+                     data: data 
+                    }) 
+                    })
 
 
 

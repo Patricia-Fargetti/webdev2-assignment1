@@ -1,64 +1,78 @@
-body{
-    background-color: #181818;
-    margin:0;
+body {
+  background-color: #181818;
+  margin: 0;
 
 }
 
 .title {
-    font-size: 4rem;
-    color:red;
-    padding: 20px 20px;
-    display: flex;
+  font-size: 4rem;
+  color: red;
+  padding: 20px 20px;
+  display: flex;
 
-justify-content: center;
+  justify-content: center;
 
- text-align: center;
+  text-align: center;
 }
-.banner-image{
-    background-image:  url("images/guitar_banner1.png");
-    height: 460px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: fit;
-    position: relative;
-   
+
+.banner-image {
+  background-image: url("images/guitar_banner1.png");
+  height: 460px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: fit;
+  position: relative;
+
 }
 
 
 .menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #383838;
-  }
-  
-  .menu-items {
-    float: right;
-    padding-top:20px;
-  }
-  
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #383838;
+  display: flex;
+  width: 100%;
+}
+
+text_menu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.text-items-menu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-items {
+  float: right;
+  padding-top: 20px;
+}
+
 .menu-items a {
-    /* display: block; */
-    color: red;
-    font-weight: bold;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  /* Change the link color to #111 (black) on hover */
-  .menu-items a:hover {
-   text-decoration: underline;
+  /* display: block; */
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.menu-items a:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+  .banner-image {
+    background-image: url("images/guitar_banner.png");
+    background-position: right;
   }
 
-  @media only screen and (max-width: 600px) {
-    .banner-image{
-      background-image:  url("images/guitar_banner.png");
-      background-position: right;
-    }
-    .title{
-      color:red;
-      
-    }
+  .title {
+    color: red;
+
   }
+}

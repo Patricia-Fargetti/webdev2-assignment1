@@ -7,6 +7,9 @@ const express = require('express');
 const app  = express();
 const { expressjwt: jwt } = require('express-jwt');
 var jwks = require('jwks-rsa');
+const jwtAuthz = require('express-jwt-authz');
+
+
 
 var jwtCheck = jwt({
     secret: jwks.expressJwtSecret({
@@ -15,10 +18,19 @@ var jwtCheck = jwt({
         jwksRequestsPerMinute: 5,
         jwksUri: 'https://dev-8c172k4g8h4ugh58.us.auth0.com/.well-known/jwks.json'
   }),
+  requestProperty: 'user',
   audience: 'http://localhost:5000',
   issuer: 'https://dev-8c172k4g8h4ugh58.us.auth0.com/',
   algorithms: ['RS256']
 });
+
+const checkPermission = jwtAuthz(["read:admin-messages"],{
+
+    customScopeKey: "permissions"
+
+  }
+
+);
 
 app.get('/public', (req, res) => {
     res.json({
@@ -30,6 +42,12 @@ app.get('/public', (req, res) => {
 app.get('/private', jwtCheck, (req, res) => {
     res.json({
         type: "private"
+    })
+})
+
+app.get('/role', jwtCheck, checkPermission, (req, res) => {
+    res.json({
+        type: "role based success"
     })
 })
 
